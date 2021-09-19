@@ -21,7 +21,8 @@ p {
 
 table {padding: 2em}
 
-th {color:azure font-size: 20px border 10pt; text-align: center; padding: 15px;}
+th {color:azure font-size 20px; border: 10pt; padding: 15px;
+}
 
 thead{background-color: slateblue;
   color: snow;}
@@ -29,14 +30,28 @@ thead{background-color: slateblue;
   td {
     border-bottom: 1px solid black;
     padding: 0 0.5em;
+  }
 
-    .Tennis {
+   .Tennis {
       color: blueviolet;
     }
+    
+    .open {
+      color: crimson;
+    }
+
+    .Painting { 
+      color: indigo; font-size: 14px; font-weight: 900;
+    }
+
+    .Work {
+      color: orange; font-weight: bolder;
+    }
+
+    .Class {
+      color: teal; font-weight: initial;
+    }
+
 
 .multi-word {color: salmon
-}
-
-circle {
-  fill: blue;
 }
