@@ -30,6 +30,9 @@ thead{background-color: slateblue;
     border-bottom: 1px solid black;
     padding: 0 0.5em;
 
+    .Tennis {
+      color: blueviolet;
+    }
 
 .multi-word {color: salmon
 }
@@ -37,9 +40,3 @@ thead{background-color: slateblue;
 circle {
   fill: blue;
 }
-
-.Tennis {
-  color: teal;
-}
-
-#this-header-only { font-size: 100px;}
