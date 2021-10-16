@@ -12,6 +12,4 @@ d3.csv('../[PATH_TO_YOUR_DATA]', d3.autoType)
     
 
     /* HTML ELEMENTS */
-    /** Select your container and append the visual elements to it */
-
-  })
+    /** Select your container and append the visual elements to it **/
