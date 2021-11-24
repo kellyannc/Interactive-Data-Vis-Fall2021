@@ -1,13 +1,13 @@
 /* CONSTANTS AND GLOBALS */
 const width = 600,
   height = 600,
-  margin = 10,
+  margin = 40,
   radius =5;
 
 /* LOAD DATA */
 d3.json("../data/environmentRatings.json", d3.autoType)
   .then(scores => {
-    // console.log(scores)
+    console.log(scores)
 
     const svg = d3.select("#container")
       .append("svg")
@@ -19,12 +19,14 @@ d3.json("../data/environmentRatings.json", d3.autoType)
 
     const xScale = d3.scaleLinear()
     .domain(d3.extent(scores, d => d.ideologyScore2020))
-    .range(margin, width - margin)
+    .range([margin, width - margin])
     .nice()
  
     const yScale = d3.scaleLinear()
     .domain(d3.extent(scores, d => d.envScore2020))
-    .range(height - margin, margin)
+    .range([height - margin, margin])
+
+    // console.log('yScale.domain():>>', yScale.domain());
 
     const colorscale = d3.scaleOrdinal()
     .domain(["R", "D", "I"])
@@ -40,5 +42,17 @@ d3.json("../data/environmentRatings.json", d3.autoType)
     .attr("cy", d => yScale(d.envScore2020))
     .attr("r", radius)
     .style("fill", d => colorscale(d.Party))
+
+    svg.append("g")
+      .attr("class", "x-axis")
+      .style("transform", 'translate(0px,${height - margin}px)')
+      .call(d3.axisBottom(xScale))
+
+      svg.append("g")
+      .attr("class", "y-axis")
+      .style("transform", 'translate(${height - margin}px,0px)')
+      .call(d3.axisLeft(yScale))
+
+
 
   });
