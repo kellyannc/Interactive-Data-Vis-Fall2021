@@ -7,7 +7,6 @@ const height = 600
 /* LOAD DATA */
 d3.csv('../data/squirrelActivities.csv', d3.autoType)
   .then(data => {
-    // console.log("data", data)
 
     const svg = d3.select("#container")
       .append("svg")
@@ -32,7 +31,6 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
     .paddingInner(.5)
     .paddingOuter(.6);
 
-
     svg.selectAll(".bar")
       .data(data)
       .join("rect")
@@ -41,7 +39,7 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
       .attr("y", d => yScale(d.activity))
       .attr("width", d => width - xScale(d.count))
       .attr("height", yScale.bandwidth())
-      .attr('fill', 'white')
+      .attr('fill', 'yellow')
     
      
   })
