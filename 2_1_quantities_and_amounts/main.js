@@ -2,7 +2,7 @@
 /* CONSTANTS AND GLOBALS */
 const width = 800;
 const height = 600
-;
+margin = 40;
 
 /* LOAD DATA */
 d3.csv('../data/squirrelActivities.csv', d3.autoType)
@@ -12,11 +12,11 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
       .append("svg")
       .attr("width", width)
       .attr("height", height)
-      .style("background-color", "blue")
+      .style("background-color", "pink")
       .style('border', '10px white') // Set the border of the div as 'white'
       .style('font-size', 'large')        // Set the text font size in the div to 'small'
       .style('color', 'red')            // Set the text font color to 'white'
-      .style('text-align', 'right')       // Set the text alignment in the div to 'right'
+      .style('text-align', 'center')       // Set the text alignment in the div to 'right'
       .style('left-padding', '6px')            // HINT: CSS styles require units, not just numbers
 
       const activities = data.map(d => d.activity)
@@ -24,6 +24,7 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
     const xScale = d3.scaleLinear()
     .domain(d3.extent(data, d => d.count))
     .range([0, width])
+    .nice();
 
      const yScale = d3.scaleBand()
     .domain(activities)
@@ -40,8 +41,19 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
       .attr("width", d => width - xScale(d.count))
       .attr("height", yScale.bandwidth())
       .attr('fill', 'yellow')
-    
-     
+  
+
+      svg.append("g")
+      .attr("class", "xaxis")
+      .style("transform", 'translate(0px,${height - margin}px)')
+      .call(d3.axisBottom(xScale))
+
+      svg.append("g")
+      .attr("class", "yaxis")
+      .style("transform", 'translate(0px,${margin- height}px)')
+      .call(d3.axisRight(yScale))
+
+
   })
 
 

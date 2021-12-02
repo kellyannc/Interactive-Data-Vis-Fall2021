@@ -25,6 +25,7 @@ d3.json("../data/environmentRatings.json", d3.autoType)
     const yScale = d3.scaleLinear()
     .domain(d3.extent(scores, d => d.envScore2020))
     .range([height - margin, margin])
+    .nice()
 
     // console.log('yScale.domain():>>', yScale.domain());
 
@@ -45,14 +46,12 @@ d3.json("../data/environmentRatings.json", d3.autoType)
 
     svg.append("g")
       .attr("class", "x-axis")
-      .style("transform", 'translate(0px,${height - margin}px)')
+      .style("transform", 'translate(0px,${margin - height}px)')
       .call(d3.axisBottom(xScale))
 
       svg.append("g")
       .attr("class", "y-axis")
-      .style("transform", 'translate(${height - margin}px,0px)')
-      .call(d3.axisLeft(yScale))
-
-
+      .style("transform", 'translate(0px,0px)')
+      .call(d3.axisRight(yScale))
 
   });
