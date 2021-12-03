@@ -12,35 +12,39 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
       .append("svg")
       .attr("width", width)
       .attr("height", height)
-      .style("background-color", "pink")
-      .style('border', '10px white') // Set the border of the div as 'white'
-      .style('font-size', 'large')        // Set the text font size in the div to 'small'
-      .style('color', 'red')            // Set the text font color to 'white'
-      .style('text-align', 'center')       // Set the text alignment in the div to 'right'
-      .style('left-padding', '6px')            // HINT: CSS styles require units, not just numbers
+      .style("background-color", "orange")
+      .style('border', '10px white') 
+      .style('font-size', '100px')        
+      .style('color', 'yellow')            
+      .style('text-align', 'right')    
+      .style('left-padding', '500px')            
 
       const activities = data.map(d => d.activity)
 
     const xScale = d3.scaleLinear()
     .domain(d3.extent(data, d => d.count))
-    .range([0, width])
+    .range([0, width - margin])
     .nice();
 
      const yScale = d3.scaleBand()
     .domain(activities)
     .range([0, height])
-    .paddingInner(.5)
-    .paddingOuter(.6);
+    .paddingInner(.20)
+    .paddingOuter(.40);
 
     svg.selectAll(".bar")
       .data(data)
       .join("rect")
       .attr("class", "bar")
-      .attr("x", d => xScale(d.count))
+      .attr("x", (0))
       .attr("y", d => yScale(d.activity))
       .attr("width", d => width - xScale(d.count))
       .attr("height", yScale.bandwidth())
-      .attr('fill', 'yellow')
+      .attr('fill', 'purple')
+      // .style('font-size', '100px')        
+      // .style('color', 'purple')            
+      // .style('text-align', 'left')    
+      // .style('left-padding', '30px') =
   
 
       svg.append("g")
@@ -56,7 +60,15 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
 
   })
 
-
+  // vg.selectAll("myRect")
+  // .data(data)
+  // .enter()
+  // .append("rect")
+  // .attr("x", x(0) )
+  // .attr("y", function(d) { return y(d.Country); })
+  // .attr("width", function(d) { return x(d.Value); })
+  // .attr("height", y.bandwidth() )
+  // .attr("fill", "#69b3a2"
 
   // Tutorial
 
