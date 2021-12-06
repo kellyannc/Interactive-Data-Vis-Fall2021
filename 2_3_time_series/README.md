@@ -2,7 +2,7 @@
 
 The goals for this tutorial are:
 
-- to reinforce the basic mechanics of how d3 allows you to [select](https://github.com/d3/d3-selection) HTML/SVG elements and map them to data elements.
+- to reinforce the basic mechanics of how d1llows you to [select](https://github.com/d3/d3-selection) HTML/SVG elements and map them to data elements.
 - to reinforce [HTML svg](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg) coordinate system.
 - to reinforce how [d3-scales](https://github.com/d3/d3-scale) can map abstract data elements to visual variables.
 - to reinforce how to add axes to an svg using [d3-axis](https://github.com/d3/d3-axis).
