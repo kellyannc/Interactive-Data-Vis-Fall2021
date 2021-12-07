@@ -64,7 +64,7 @@ d3.csv('../data/happiness.csv', d3.autoType)
   });
 
 
-//   tutorial II
+// //   tutorial II
 
 //   /* CONSTANTS AND GLOBALS */
 // const width = 600,
