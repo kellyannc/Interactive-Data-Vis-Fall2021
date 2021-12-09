@@ -72,7 +72,7 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
 
   // Tutorial
 
-  // /* CONSTANTS AND GLOBALS */
+//   /* CONSTANTS AND GLOBALS */
 // const width = 800;
 // const height = 600;
 

@@ -1,76 +1,76 @@
  
-//  (9th Street women artist graph) 
- /* CONSTANTS AND GLOBALS */
-const width = 800,
-  height = 600 ,
-  margin = 20;
+// //  (9th Street women artist graph) 
+//  /* CONSTANTS AND GLOBALS */
+// const width = 800,
+//   height = 600 ,
+//   margin = 20;
 
-/* LOAD DATA */
- d3.csv('../data/9thStWomenArtistCombo.csv', d => {
-    return {
-      artworkdate: new Date(d.Date, 0, 1),
-      Artistname: d.Artist,
-      artworkcount: +d.moma
- }
-}).then(data => {
- console.log('data :>> ', data);
+// /* LOAD DATA */
+//  d3.csv('../data/9thStWomenArtistCombo.csv', d => {
+//     return {
+//       artworkdate: new Date(d.Date, 0, 1),
+//       Artistname: d.Artist,
+//       artworkcount: +d.moma
+//  }
+// }).then(data => {
+//  console.log('data :>> ', data);
  
-  // SCALES
-  const xScale = d3.scaleTime()
-  .domain(d3.extent(data, d => d.artworkdate))
-  .range ([margin, width - margin])
+//   // SCALES
+//   const xScale = d3.scaleTime()
+//   .domain(d3.extent(data, d => d.artworkdate))
+//   .range ([margin, width - margin])
 
-  const yScale = d3.scaleLinear()
-  .domain(d3.extent(data, d => d.artworkcount))
-  .range([height - margin, margin])
+//   const yScale = d3.scaleLinear()
+//   .domain(d3.extent(data, d => d.artworkcount))
+//   .range([height - margin, margin])
 
-  // CREATE SVG ELEMENT
-const svg = d3.select("#container")
-  .append("svg")
-  .attr("width", width)
-  .attr("height", height)
+//   // CREATE SVG ELEMENT
+// const svg = d3.select("#container")
+//   .append("svg")
+//   .attr("width", width)
+//   .attr("height", height)
 
-  // BUILD AND CALL AXES
+//   // BUILD AND CALL AXES
 
-  // LINE GENERATOR FUNCTION
+//   // LINE GENERATOR FUNCTION
 
-  const lineGen = d3.line()
-    .x(d => xScale(d.artworkdate))
-    .y(d => yScale(d.artworkcount))
+//   const lineGen = d3.line()
+//     .x(d => xScale(d.artworkdate))
+//     .y(d => yScale(d.artworkcount))
 
-    const artworksatmoma = d3.groups(data, d => d.Artistname).map(([key, data]) => data)
-      // console.log('countries :>> ', countries);
-      // // // console.log(countries)
-      // // // console.log(countries.get("Afghanistan"))
-
-
-  // DRAW LINE
+//     const artworksatmoma = d3.groups(data, d => d.Artistname).map(([key, data]) => data)
+//       // console.log('countries :>> ', countries);
+//       // // // console.log(countries)
+//       // // // console.log(countries.get("Afghanistan"))
 
 
-  const colorscale = d3.scaleOrdinal()
-  .domain(["Elaine de Kooning", "Grace Hartigan", "Helen Frankenthaler", "Joan Mitchell", "Lee Krasner"])
-  .range(["red", "purple", "pink", "blue", "green"])
+//   // DRAW LINE
 
-svg.selectAll(".trend")
-  .data(artworksatmoma)
-  .join("path")
-  .attr("class", "trend")
-  // .attr("stroke", "black")
-  .attr("fill", "none")
-  .attr("d", d => lineGen(d))
-  .style("stroke", d => colorscale(d.Artistname))
 
-  svg.append("g")
-  .attr("class", "x-axis")
-  .style("transform", 'translate(0px,${height - margin}px)')
-  .call(d3.axisBottom(xScale))
+//   const colorscale = d3.scaleOrdinal()
+//   .domain(["Elaine de Kooning", "Grace Hartigan", "Helen Frankenthaler", "Joan Mitchell", "Lee Krasner"])
+//   .range(["red", "purple", "pink", "blue", "green"])
 
-  svg.append("g")
-  .attr("class", "y-axis")
-  .style("transform", 'translate(0px,0px)')
-  .call(d3.axisRight(yScale))
+// svg.selectAll(".trend")
+//   .data(artworksatmoma)
+//   .join("path")
+//   .attr("class", "trend")
+//   // .attr("stroke", "black")
+//   .attr("fill", "none")
+//   .attr("d", d => lineGen(d))
+//   .style("stroke", d => colorscale(d.Artistname))
 
-});
+//   svg.append("g")
+//   .attr("class", "x-axis")
+//   .style("transform", 'translate(0px,${height - margin}px)')
+//   .call(d3.axisBottom(xScale))
+
+//   svg.append("g")
+//   .attr("class", "y-axis")
+//   .style("transform", 'translate(0px,0px)')
+//   .call(d3.axisRight(yScale))
+
+// });
 
 
 // //  Homework 
@@ -132,58 +132,58 @@ svg.selectAll(".trend")
 
 // TUTORIAL: 
 
-//  /* CONSTANTS AND GLOBALS */
-//  const width = 600,
-//  height = 600 ,
-//  margin = 20;
+ /* CONSTANTS AND GLOBALS */
+ const width = 600,
+ height = 600 ,
+ margin = 20;
 
-// /* LOAD DATA */
-// d3.csv('../data/populationOverTime.csv', d => {
-//  return {
-//    year: new Date(+d.Year, 0, 1),
-//    country: d.Entity,
-//    population: +d.Population
-//  }
-// }).then(data => {
-//  console.log('data :>> ', data);
+/* LOAD DATA */
+d3.csv('../data/populationOverTime.csv', d => {
+ return {
+   year: new Date(+d.Year, 0, 1),
+   country: d.Entity,
+   population: +d.Population
+ }
+}).then(data => {
+ console.log('data :>> ', data);
 
-//  // SCALES
-//  const xScale = d3.scaleTime()
-//  .domain(d3.extent(data, d => d.year))
-//  .range ([margin, width - margin])
+ // SCALES
+ const xScale = d3.scaleTime()
+ .domain(d3.extent(data, d => d.year))
+ .range ([margin, width - margin])
 
-//  const yScale = d3.scaleLinear()
-//  .domain(d3.extent(data, d => d.population))
-//  .range([height - margin, margin])
+ const yScale = d3.scaleLinear()
+ .domain(d3.extent(data, d => d.population))
+ .range([height - margin, margin])
 
-//  // CREATE SVG ELEMENT
-// const svg = d3.select("#container")
-//  .append("svg")
-//  .attr("width", width)
-//  .attr("height", height)
+ // CREATE SVG ELEMENT
+const svg = d3.select("#container")
+ .append("svg")
+ .attr("width", width)
+ .attr("height", height)
 
-//  // BUILD AND CALL AXES
+ // BUILD AND CALL AXES
 
-//  // LINE GENERATOR FUNCTION
+ // LINE GENERATOR FUNCTION
 
-//  const lineGen = d3.line()
-//    .x(d => xScale(d.year))
-//    .y(d => yScale(d.population))
+ const lineGen = d3.line()
+   .x(d => xScale(d.year))
+   .y(d => yScale(d.population))
 
-//    const countries = d3.groups(data, d => d.country).map(([key, data]) => data)
-//      // console.log('countries :>> ', countries);
-//      // // // console.log(countries)
-//      // // // console.log(countries.get("Afghanistan"))
+   const countries = d3.groups(data, d => d.country).map(([key, data]) => data)
+     // console.log('countries :>> ', countries);
+     // // // console.log(countries)
+     // // // console.log(countries.get("Afghanistan"))
 
 
-//  // DRAW LINE
+ // DRAW LINE
 
-// svg.selectAll(".trend")
-//  .data(countries)
-//  .join("path")
-//  .attr("class", "trend")
-//  .attr("stroke", "black")
-//  .attr("fill", "none")
-//  .attr("d", d => lineGen(d))
+svg.selectAll(".trend")
+ .data(countries)
+ .join("path")
+ .attr("class", "trend")
+ .attr("stroke", "black")
+ .attr("fill", "none")
+ .attr("d", d => lineGen(d))
 
-// });
+});

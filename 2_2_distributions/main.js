@@ -1,5 +1,5 @@
 
-// 9th Street Artist 
+// // 9th Street Artist 
   /* CONSTANTS AND GLOBALS */
   const width = 600,
   height = 600,
@@ -10,24 +10,23 @@
 d3.csv('../data/9thStWomenArtistCombo.csv', d3.autoType)
 .then(data => {
 
-  
     const svg = d3.select("#container")
       .append("svg")
       .attr("width", width)
       .attr("height", height)
-      .style("background-color", "grey")
+      .style("background-color", "white")
   
     /* SCALES */
   
     const xScale = d3.scaleLinear()
     .domain(d3.extent(data, d => d.Height))
-    .range([width - margin, margin])
-    .nice()
+    .range([0, width - margin])
+    .nice();
   
     const yScale = d3.scaleLinear()
     .domain(d3.extent(data, d => d.Width))
     .range([height - margin, margin])
-    .nice()
+    .nice();
   
     // console.log('yScale.domain():>>', yScale.domain());
   
@@ -47,13 +46,13 @@ d3.csv('../data/9thStWomenArtistCombo.csv', d3.autoType)
     .style("fill", d => colorscale(d.Classification))
   
     svg.append("g")
-      .attr("class", "x-axis")
+      .attr("class", "xaxis")
       .style("transform", 'translate(0px,${margin - width}px)')
       .call(d3.axisBottom(xScale))
   
       svg.append("g")
-      .attr("class", "y-axis")
-      .style("transform", 'translate(0px, 0px)')
+      .attr("class", "yaxis")
+      .style("transform", 'translate(${margin - height}px, 0px)')
       .call(d3.axisLeft(yScale))
 
   });
@@ -135,7 +134,7 @@ d3.csv('../data/9thStWomenArtistCombo.csv', d3.autoType)
 
 // //   tutorial II
 
-//   /* CONSTANTS AND GLOBALS */
+  /* CONSTANTS AND GLOBALS */
 // const width = 600,
 // height = 600,
 // margin = 40,
