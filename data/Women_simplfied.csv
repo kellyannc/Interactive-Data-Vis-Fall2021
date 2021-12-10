@@ -1,6 +1,6 @@
-﻿Artist,Birth,Death,count
-Elaine de Kooning,1920,1989,11
-Helen                             Frankenthaler,1928,2011,62
-Grace Hartigan,1922,2008,39
-Joan Mitchell,1925,1992,47
-Lee Krasner,1908,1994,10
+﻿Artist,Birth,Death,count,lifespan,Birthplace,Nationality,Religion,first group show,first solo show,NYC artistic arrival,Residence Other,Spouse,spouse  num,spouse name,children (bio),children num,step Children
+Elaine de Kooning,1920,1989,11,69,"Brooklyn, NY",Irish/English,Catholic/Protestantof jewish Descent,1951,1954,1937,"South Hampton, NY",Y,1,Willem de Kooning,N,0,1
+Helen                             Frankenthaler,1928,2011,62,83,"Manhattan, NY",German,Jewish,1950,1951,1949,"Darien, CT",Y,2,"Robert Motherwell, Stephen M. DuBrul, Jr.",N,0,2
+Grace Hartigan,1922,2008,39,86,"Newark, NJ",Irish/English,,1950,1951,1945,"Baltimore, MD",Y,4,"Robert Jachens, Harry Jackson, Robert Keene, Dr. Winston Price",Y,1,
+Joan Mitchell,1925,1992,47,67,"Chicago, Il",,,1951,1952,1950,"Paris, France",Y,1,Barney Rosset,N,0,
+Lee Krasner,1908,1994,10,86,"Brooklyn, NY",Russian`,Jewish,1942,1945,1935,"Springs, NY",Y,1,Jackson Pollock,N,0,
