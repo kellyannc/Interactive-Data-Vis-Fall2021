@@ -33,7 +33,8 @@ d3.csv('../data/Women_simplfied.csv', d3.autoType)
     .paddingInner(.20)
     .paddingOuter(.10);
 
-    const colorscale = d3.scaleOrdinal()
+
+    const colorScale = d3.scaleOrdinal()
     .domain(["Elaine de Kooning", "Helen Frankenthaler", "Grace Hartigan", "Joan Mitchell", "Lee Krasner"])
     .range(["red", "orange", "purple", "orange", "green"])
 
@@ -46,7 +47,7 @@ d3.csv('../data/Women_simplfied.csv', d3.autoType)
       .attr("width", d => xScale(d.count))
       .attr("height", yScale.bandwidth())
       .attr('fill', 'none')
-      .style("stroke", d => colorscale(d.Artist))
+      .style("stroke", d => colorScale(d.Artist))
       // .style('font-size', '100px')        
       // .style('color', 'purple')            
       // .style('text-align', 'left')    

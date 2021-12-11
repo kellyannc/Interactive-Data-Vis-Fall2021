@@ -46,7 +46,6 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
       // .style('text-align', 'left')    
       // .style('left-padding', '30px') =
   
-
       svg.append("g")
       .attr("class", "xaxis")
       .style("transform", 'translate(0px,${height - margin}px)')
