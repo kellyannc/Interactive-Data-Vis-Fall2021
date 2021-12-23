@@ -272,7 +272,7 @@ d3.csv('../data/US_Covid_overtime.csv', d => {
     totaldeaths: +d.tot_death
  }
 }).then(data => {
- console.log('data :>> ', data);
+//  console.log('data :>> ', data);
 
  // + SCALES
  const xScale = d3.scaleTime()
@@ -288,6 +288,7 @@ d3.csv('../data/US_Covid_overtime.csv', d => {
    .append("svg")
    .attr("width", width)
    .attr("height", height)
+  
   //  .style('font-size', '100px')        
   //  .style('color', 'rgb(40, 56, 148)')            
   //  .style('text-align', 'right')    
@@ -339,6 +340,7 @@ const usstates = d3.groups(data, d => d.states).map(([key, data]) => data)
    .attr("fill", "none")
    .attr("stroke", "black")
    .attr("d", d => lineGen(d))
+  
   
 
 });
