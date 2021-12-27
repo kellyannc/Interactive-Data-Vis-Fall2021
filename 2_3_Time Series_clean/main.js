@@ -71,17 +71,17 @@ const lineGen = d3.line()
   .x(d => xScale(d.Year))
   .y(d => yScale(d.Democratic))
 
-// const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data)
+const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data)
 
 // DRAW LINE
 svg.selectAll(".line")
-  .data([data]) // data needs to take an []
+  .data(allstates) // data needs to take an []
   .join("path")
   .attr("class", 'line')
   .attr("fill", "none")
   .attr("stroke", "black")
   .attr("d", d => lineGen(d))
-  .sort(d3.ascending())
+  .sort((allstates) => d3.ascending(d.Year))
 
 });
  
