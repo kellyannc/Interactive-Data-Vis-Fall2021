@@ -156,12 +156,17 @@ d3.csv('../data/US_Covid_overtime_Northeast_2.csv', d => {
   //  .attr("writing-mode", 'vertical-rl')
    .text("Population")
 
+  // const usstates = d3.groups(data, d => d.states).map(([key, data]) => data.sort(d3.ascending(data, d => d.dates).map))
+   const usstates = d3.groups(data, d => d.states).map(([key, data]) => data.sort(d3.ascending))
+  // const usstates = d3.groups(data, d => d.states).map(([key, data]) => data)
+
  // LINE GENERATOR FUNCTION
  const lineGen = d3.line()
    .x(d => xScale(d.dates))
    .y(d => yScale(d.totaldeaths))
    
-const usstates = d3.groups(data, d => d.states).map(([key, data]) => data)
+// const usstates = d3.groups(data, d => d.states).map(([key, data]) => data)
+
 // console.log('usstates :>> ', usstates)
 // console.log(usstates)
 // console.log(usstates.get("NY"))
@@ -174,6 +179,6 @@ const usstates = d3.groups(data, d => d.states).map(([key, data]) => data)
    .attr("fill", "none")
    .attr("stroke", "black")
    .attr("d", d => lineGen(d))
-   .sort((usstates) => d3.ascending(d.dates))
+  //  .sort((usstates) => d3.ascending(d.dates))
 
 });

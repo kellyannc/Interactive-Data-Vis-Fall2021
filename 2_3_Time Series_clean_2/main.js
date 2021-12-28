@@ -12,7 +12,7 @@ const formatBillions = (num) => d3.format(".2s")(num).replace(/G/, 'B')
 const formatDate = d3.timeFormat("%Y")
 
 /* LOAD DATA */
-d3.csv('../data/august_senate_polls.csv', d => {
+d3.csv('../data/august_senate_polls_AK-CT.csv', d => {
 // use custom initializer to reformat the data the way we want it
 // ref: https://github.com/d3/d3-fetch#dsv
 return {
