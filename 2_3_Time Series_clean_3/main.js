@@ -3,6 +3,8 @@ const width = window.innerWidth * 0.7,
 height = window.innerHeight * 0.7,
 margin = { top: 20, bottom: 50, left: 60, right: 60 }
 
+
+
 /*
 this extrapolated function allows us to replace the "G" with "B" min the case of billions.
 we cannot do this in the .tickFormat() because we need to pass a function as an argument,
@@ -12,16 +14,16 @@ const formatBillions = (num) => d3.format(".2s")(num).replace(/G/, 'B')
 const formatDate = d3.timeFormat("%Y")
 
 /* LOAD DATA */
-d3.csv('../data/august_senate_polls.csv', d => {
+d3.csv('../data/august_senate_polls_AK-CT_sort.csv', d => {
 // use custom initializer to reformat the data the way we want it
 // ref: https://github.com/d3/d3-fetch#dsv
 return {
-  Year: new Date(+d.cycle, 0, 1),
+  Year: new Date(d.cycle),
   USstate: d.state,
   Democratic: +d.DEM_poll
 }
 }).then(data => {
-console.log('data :>> ', data);
+// console.log('data :>> ', data);
 
 // + SCALES
 const xScale = d3.scaleTime()
@@ -66,13 +68,23 @@ yAxisGroup.append("text")
   .attr("writing-mode", 'vertical-rl')
   .text("Democratic")
 
+const colorScale = d3.scaleOrdinal()
+.domain(["AK","AL","AR","AZ","CA","CO","CT"])
+.range(["red","yellow","purple","orange","pink","black","grey"])
+// .domain(["AK","AL","AR","AZ","CA","CO","CT"])
+// .range(["red","yellow","purple","orange","pink","black","grey"])
+
+
+// const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data)
+const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data.sort(d3.ascending))
+// const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data.sort((d.allstates, d.Year) => (d3.ascending(d.allstates, d.Year))
+
+// // console.log('allstates :>> ', allstates)
+
 // LINE GENERATOR FUNCTION
 const lineGen = d3.line()
   .x(d => xScale(d.Year))
   .y(d => yScale(d.Democratic))
-
-const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data)
-// const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data.sort(d3.ascending))
 
 // DRAW LINE
 svg.selectAll(".line")
@@ -80,9 +92,11 @@ svg.selectAll(".line")
   .join("path")
   .attr("class", 'line')
   .attr("fill", "none")
-  .attr("stroke", "black")
+  // .attr("stroke", "black")
   .attr("d", d => lineGen(d))
   // .sort((allstates) => d3.ascending(d.Year))
+  .attr("stroke", d => colorScale(d))
+  .style("stroke-width", 3)
 
 });
  

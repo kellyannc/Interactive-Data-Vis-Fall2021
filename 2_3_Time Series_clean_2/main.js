@@ -80,7 +80,7 @@ svg.selectAll(".line")
   .join("path")
   .attr("class", 'line')
   .attr("fill", "none")
-  .attr("stroke", "black")
+  .attr("stroke", "blue")
   .attr("d", d => lineGen(d))
   // .sort((allstates) => d3.ascending(d.Year))
 
