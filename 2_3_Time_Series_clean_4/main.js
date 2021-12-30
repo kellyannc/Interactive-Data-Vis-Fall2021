@@ -68,12 +68,11 @@ yAxisGroup.append("text")
   .attr("writing-mode", 'vertical-rl')
   .text("Democratic")
 
-const colorScale = d3.scaleOrdinal()
-.domain(["AK","AL","AR","AZ","CA","CO","CT"])
+const colorScale = d3.scaleOrdinal(d3.schemeCategory10)
+colorScale.domain(["AK","AL","AR","AZ","CA","CO","CT"])
 .range(["red","yellow","purple","orange","pink","black","grey"])
 // .domain(["AK","AL","AR","AZ","CA","CO","CT"])
 // .range(["red","yellow","purple","orange","pink","black","grey"])
-
 
 // const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data)
 const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data.sort(d3.ascending))
@@ -86,14 +85,15 @@ const lineGen = d3.line()
   .x(d => xScale(d.Year))
   .y(d => yScale(d.Democratic))
 
-// DRAW LINE
 
+// DRAW LINE
 svg.selectAll(".line")
   .data(allstates) // data needs to take an []
   .join("path")
   .attr("class", 'line')
   .attr("fill", "none")
   // .attr("stroke", "black")
+// .attr("stroke", d => colorByState(d))
   .attr("d", d => lineGen(d))
   // .sort((allstates) => d3.ascending(d.Year))
   .attr("stroke", d => colorScale(d))

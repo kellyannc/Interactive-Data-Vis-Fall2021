@@ -12,13 +12,13 @@ const formatBillions = (num) => d3.format(".2s")(num).replace(/G/, 'B')
 const formatDate = d3.timeFormat("%Y")
 
 /* LOAD DATA */
-d3.csv('../data/august_senate_polls.csv', d => {
+d3.csv('../data/august_senate_polls_sort.csv', d => {
 // use custom initializer to reformat the data the way we want it
 // ref: https://github.com/d3/d3-fetch#dsv
 return {
-  Year: new Date(+d.cycle, 0, 1),
+  Year: new Date(d.cycle),
   USstate: d.state,
-  Democratic: +d.DEM_poll
+  Democratic: +d.DEM_poll,
 }
 }).then(data => {
 console.log('data :>> ', data);
@@ -66,13 +66,17 @@ yAxisGroup.append("text")
   .attr("writing-mode", 'vertical-rl')
   .text("Democratic")
 
+  const colorScale = d3.scaleOrdinal()
+.domain([data])
+.range(["red","yellow","purple","orange","pink","black","grey"])
+
 // LINE GENERATOR FUNCTION
 const lineGen = d3.line()
   .x(d => xScale(d.Year))
   .y(d => yScale(d.Democratic))
 
-const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data)
-// const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data.sort(d3.ascending))
+// const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data)
+const allstates = d3.groups(data, d => d.USstate).map(([key, data]) => data.sort(d3.ascending))
 
 // DRAW LINE
 svg.selectAll(".line")
@@ -83,6 +87,9 @@ svg.selectAll(".line")
   .attr("stroke", "black")
   .attr("d", d => lineGen(d))
   // .sort((allstates) => d3.ascending(d.Year))
+  .attr("stroke", d => colorScale(d))
+  .style("stroke-width", 3)
+
 
 });
  

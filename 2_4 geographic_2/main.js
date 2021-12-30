@@ -45,6 +45,7 @@ Promise.all([
       .includes(d.properties.STUSPS)
       ? "pink"
       : "blue")
+     
     .attr("stroke", "white")
     // console.log(geojson.features);
 
